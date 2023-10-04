@@ -1,4 +1,4 @@
-# Radio Colours
+# About Radio
 
 This website will be used to track contributions, versions, and documentation for the [BrickMMO Colours](https://radio.brickmmo.com/) project.
 

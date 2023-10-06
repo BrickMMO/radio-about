@@ -1,0 +1,34 @@
+<style>@import url("//readme.codeadam.ca/readme.css");</style>
+
+## Version 2 - Merge with Central Console
+
+Completed: June 2023
+
+This is a brief description of what was completed during version one.
+
+### Related Links
+
+- [Version 2 Frontend GitHub Repo](https://github.com/BrickMMO/template-about-markdown)
+- [Version 2 Backend GitHub Repo](https://github.com/BrickMMO/template-about-markdown)
+
+### Documents
+
+- [Pitch (Markdown)](v1/system-v1-pitch)
+- [Pitch (PDF)](v1/system-v1-pitch.pdf)
+- [Requirements Document (Markdown)](v1/system-v1-requirements)
+- [Requirements Document (PDF)](v1/system-v1-requirements.pdf)
+
+### Contributors
+
+|                                       | Name        | Type    | GitHub                                                |
+| ------------------------------------- | ----------- | ------- | ----------------------------------------------------- |
+| ![codeadamca](faculty/codeadamca.png) | Adam Thomas | Faculty | [https://contributions.brickmmo.com/faculty/codeadamca](https://contributions.brickmmo.com/faculty/codeadamca) |
+
+[&#10132; Back to About](/template-about-markdown/)
+
+---
+
+<a href="https://brickmmo.com">
+<img src="https://brickmmo.com/images/brickmmo-logo-horizontal.jpg" width="100">
+</a>
+

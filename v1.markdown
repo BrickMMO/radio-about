@@ -1,0 +1,35 @@
+<style>@import url("//readme.codeadam.ca/readme.css");</style>
+
+## Version 1 - Initial Production
+
+Completed: December 2022
+
+This is a brief description of what was completed during version one.
+
+![Version 1 City](images/v1-city.jpg)
+
+### Related Links
+
+- [Version 1 Frontend GitHub Repo](https://github.com/BrickMMO/template-about-markdown)
+- [Version 1 Backend GitHub Repo](https://github.com/BrickMMO/template-about-markdown)
+
+### Documents
+
+- [Pitch (Markdown)](v1/system-v1-pitch)
+- [Pitch (PDF)](v1/system-v1-pitch.pdf)
+- [Requirements Document (Markdown)](v1/system-v1-requirements)
+- [Requirements Document (PDF)](v1/system-v1-requirements.pdf)
+
+### Contributors
+
+|                                       | Name        | Type    | GitHub                                                |
+| ------------------------------------- | ----------- | ------- | ----------------------------------------------------- |
+| ![codeadamca](faculty/codeadamca.png) | Adam Thomas | Faculty | [https://contributions.brickmmo.com/faculty/codeadamca](https://contributions.brickmmo.com/faculty/codeadamca) |
+
+[&#10132; Back to About](/template-about-markdown/)
+
+---
+
+<a href="https://brickmmo.com">
+<img src="https://brickmmo.com/images/brickmmo-logo-horizontal.jpg" width="100">
+</a>

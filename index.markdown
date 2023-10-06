@@ -1,19 +1,18 @@
-# template-about-markdown
+# Radio
 
-<style>@import url("//readme.codeadam.ca/readme.css");</style>
+<style> @import url("//readme.codeadam.ca/readme.css"); </style>
 
-This is a template for `system-about` websites.
 
-![BrickMMO](images/brickmmo.png)
+![Radio Project](images/brickmmo.png)
 
-This part of the `index.markdown` page should include a brief description of this system and links to the current frontend and backend.
+The goal of this project is to create a 24/7 Ai-driven Web-based radio broadcast based on the
+BrickMMO Lego city. The radio station will stream its content to a web interface, where anyone
+can visit it from their browser, and listen to an AI voice read news stories, weather, and other
+happenings around a fictional city.
 
-- [System Frontend](https://brickmmo.com)
-- [System Backend](https://brickmmo.com)
+
 
 ## [Version 1 - Initial Production](v1)
-
-## [Version 2 - Merge with Central Console](v2)
 
 ---
 

@@ -20,9 +20,9 @@ This is a brief description of what was completed during version one.
 
 ### Contributors
 
-|                                       | Name        | Type    | GitHub                                                |
-| ------------------------------------- | ----------- | ------- | ----------------------------------------------------- |
-| ![codeadamca](faculty/codeadamca.png) | Adam Thomas | Faculty | [https://contributions.brickmmo.com/faculty/codeadamca](https://contributions.brickmmo.com/faculty/codeadamca) |
+| | Name | Type | Contributions |
+| - | - | - | - |
+| ![codeadamca](faculty/codeadamca.png) | Adam Thomas | Faculty | [codeadamca](https://contributions.brickmmo.com/faculty/codeadamca) |
 
 [&#10132; Back to About](/template-about-markdown/)
 

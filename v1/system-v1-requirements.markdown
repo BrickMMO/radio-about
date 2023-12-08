@@ -1,120 +1,186 @@
 <style>@import url("//readme.codeadam.ca/readme.css");</style>
 
-## Requirements: Project Name: Version #1
+# BRICKMMO Radio Requirements (Reporter CMS & Radio Page) #
 
-Developing the capstone project will require you to create a requirements document first and the project itself second. The requirements document is the equivalent of an architect's blueprint: it is your plan for what you will execute before you do so. While you may be tempted to develop the project without a plan – this is not allowed. The more detailed and complete your requirements document the easier it will be to create your capstone project. These are the main facets of your document:
+***<center> BRICKMMO Radio Requirementsm (Reporter CMS & Radio Page)</center>***<br />
 
-1. Student Name:
-2. Project Name:
-3. Technology stack:
-4. Project Purpose:
-5. Features list:
-6. Features Breakdown:
-   - Narrative description
-   - User stories
-   - Database description (including entity map)
-   - Dataflow diagrams
-   - Wireframes
-7. Project Timeline
+***<p style="text-align: center;"> (In conjunction with Shavin Singh) </p>***
 
-What you are creating are the instructions a developer would follow in order to build the feature you are describing. It is the scope of the feature and includes all of the information a developer would need to build it. What I have put in this handout are examples of the elements of these descriptions to give you some guidance about what I expect.
+<center>Tech Stacks</center>
+##Reporter cms - ## Laravel-Blade-PHP
+##Producer cms - ## Laravel-PHP
+##Online Radio Station ## React
+##Open AI API##
+##Text to Voice API##
+##Shoutcast Radio mp3 player##
 
-One of the key purposes of this assignment is to help you develop a mental model of what a content management system is. Mental models are a powerful set of expectations about how we see things in the world. For example: an automobile. Automobiles are ubiquitous in our world – there is no city in the world that has not spent untold billions of time, effort, and wealth, in making their city automobile friendly. Some of us can drive an automobile – all of us have been in one and have a good idea of how it works. Therefore, if I asked you to describe an automobile you would be able to do a decent job of it: even if you don't drive. The same is true for this assignment and what we are doing in the program in general. However, most of you have never done this kind of work before and so your mental model needs to be developed. That is the purpose of you doing this assignment.
+<center>Introduction</center>
+This document outlines the development plan for the BrickMMO Radio Project regarding the
+Reporter CMS and the front-facing Radio Station.  The producer CMS and broadcasting db will
+be covered in the sister requirements document produced by Shavin Singh. This plan outlines
+the project’s purpose, the development stack, application features and associated breakdowns,
+and a 7-week overview of the project's timeline.
 
-### Student Name
+<center>Project Purpose</center>
+This is 24hr radio station based around the happenings of the BRICKMMO Lego City. The
+purpose is to bring the city to life by networking its elements together, simulating an actual city.
+For instance, all the other BRICKMMO projects will have a connection to the API. They will
+update the radio producer on updates to the city and other related scheduled segments. The
+Station will have a cms for reporters to submit ideas for radio segments (reports, games, ads,
+jokes). These segments' prompts will then be approved within separate producer cms (both by a
+human and via programmed logic). At this point, the prompt is sent to Open AI API to generate
+a script for broadcasting on the radio site within a daily schedule using mp3s generated via a
+Text-To-Voice API.
 
-This seems obvious – but make sure your name is on the project wherever it can be. This includes file names, emails, the requirements document itself. There should be no doubt who the author is.
+<center>Features List</center>
 
-### Project Name (and version)
+<center>**Must Have**</center>
 
-This is more than Student X capstone project. It is the narrative and informative title for the project. It is ok to be a bit flashy and exuberant with the project name: `Jasdeep's Excellent Bixi Bike Finder.` Or `Mohamed's Amazing Vegan Recipe Builder.` It may happen that your document will be revised before you implement it. If that is so – you will have to start adding version numbers. So the file name might be – `sen-lui-requirements-v201-2023.docx` or
-`jay-dave-http-capstone-v-2a-2002.docx`. You can pick your versioning pattern – but stick to just one.
+- Reporter CMS
+- SQL DB, all tables in place (see ERD) with functional relational communication and accompanying scripts
+- Reporter & Producer CRUD
+- Producer CMS
+- Radio site and audio player
+- Reporter CMS outputting report data in the  proper format for Producer CMS to parse,
+review, and send to open ai script generation.
+- Render returned scripts from Open AI onto a forward-facing radio site.
+- Text-to-voice API configured and dj simulation
+- Music playlist random generation
 
-### Technology Stack
+<center>**Should Have**</center>
+- Same functionality as Reports for Ads, Jokes, Games segments and sub-segments.
+- Unique login for different Reporters and Producers to only see and edit their content
+separate from admin login, who see all global data and have total CRUD capacity.
+- Functionality for API calls from other BRICKMMO capstone projects (Pixilate, GPS,
+Colours)
+- Styling and UI
+- CMS displays relational lists related to Segments of the same type or topic.
+- Daily rendering of unique updated 24hr content schedule
+- Scheduled daily content from other BRICKMMO capstone projects
+- API Documentation
 
-What are you using to create your project? It could be anything – ASP.net using MVC. WordPress using LAMP. The MERN stack. Take your pick but you have to declare it here. Similarly, if you are incorporating third-party APIs, list them here.
+<center>**Nice To Have**</center>
+- Widget for uses to install radio player on own sites, RSS.
+- Others can build their radio station from our central Producer API (SDK).
+- Broadcasting in the actual city via speakers
+- Featured segments appear as text blurbs on the radio homepage
+- Radio home page form for listeners to get in touch
 
-### Project Purpose
+<center>Narrative Description</center>
+Andrew will be building the Reporter cms using Laravel-Blade and a SQL database. Everything
+starts with a prompt created by a ‘Reporter’ (real person) or coming from another BRICKMMO
+component by automation. Prompts are a data component of a radio segment. The segment will
+contain a prompt inputted by the reporter with all related data. For example, the primary data
+from a report would include the reporter's name, segment title, and date created. There are also
+sub-categories for some Segment types. For instance, Report segments can be organized into
+sub-categories:
+1. Local news
+2. Arts & culture
+3. Politics & current affairs
+4. Sports
+5. Science & technology
+6. Music
+7. Community stories
+8. Human interest stories
+9. Investigative reporting
+10. International news
 
-This is your project in plain English, something anyone could understand. Here you will describe what the project is, who the project is for, the features it will have, and how it will work.
+Any sub-category data will be included in the data saved for use later by the other features.
 
-### Features List
+The database table structure and cms logic will be organized in such a manner as to feed the
+Producer CMS templated data depending upon where it is coming from (Reporter or BRICK
+MMO API), what type of Segment it is, and what accompanying features, if any, the data has
+(for example, the segment is a song request, and has a box ticked denoting it as a dedication).
+The Reporter CMS will output JSON formatted to include the segment's origin (Reporter name
+or BRICKMMO API), prompt text, the type of segment (by id), the segment name, and any
+possible sub-data.
+When a reporter is logged in to the reporter cms, they will have access to all their previously
+created “Segments” and templates for creating any other type of Segment. 
+Once the producer receives data, it will either pass it immediately to the Open AI API (as is the
+case with data coming from another BRICKMMO component) or be submitted for review by a
+producer before Open AI script generation. If desired, the Reporter submitted data can also
+bypass producer approval and be passed to Open AI script generation immediately. 
+After generating Scripts, the Producer cms will store the scripts in a pool reserved for the
+broadcast schedule. The broadcast schedule will be organized with randomness and shuffling to
+maintain content variance. Still, other elements like the news and BRICKMMO content can be
+scheduled regularly and repeatedly.
+The database tables will be structured to generate unique form inputs for each segment type so that all relational data will be accessible via foreign keys and joins using SQL. This functionality will be achieved by incorporating a table containing different template structures depending on the segment type created, read, updated, or deleted, thus adding more variations of segment types as easily as adding new template definitions. See ERD for more information.
+Native Laravel error messages will display unless custom features need. For example, reporters
+can only log in using a Humber email address, so a custom regex will be used alongside a
+custom error msg.
+Different login credentials will separate roles. Reporters can only perform CRUD on their own
+data, whereas admins will have global CRUD capabilities.
 
-This will be a bullet-point list of the discrete capabilities your project will have. They will be categorized into Must Have features, Should Have features, then, Nice-to-have features.
+Styling will be handled so that there is a consistent theme across the cms and radio station and will incorporate the preexisting BRICKMMO Lego colour templates.
 
-Following the list of features will be a detailed breakdown of each feature:
+It should have functionality for all the types of segments and their sub-categories, but the first
+stage of mvp will focus on Reports and Reports sub-categories.
 
-### Narrative Description
+Shavin will handle the Producer cms, Ai text generation, text-to-voice, and broadcast scheduling and interaction. Details on these subjects can be read in Shavin Singh’s requirements document, and an overview can be  seen in the following:
+The segment package comes in from the reporter and gets sorted into a "scripts" table flagged with a "needs approval" column. A producer can log in, view all the records marked "needsApproval", and select the one they want. Opening it up, they can verify the prompt, and if
+it’s ok, click "send to AI writer." after they click that, the message is packaged and sent to
+chatGPT, which responds with a script for the producer to read. The producer reads the
+response script and selects "approve the script," The script is sent to the text-to-speech API,
+which will return an mp3 file that the producer can listen to. 
 
-Similar to the project purpose this is your feature in plain English. What are you building and how will it work? How will the various users interact with your application? About 250 or so words per separate feature.
+After preparing everything, the producer selects "Approve Segment," which removes the "needsApproval" flag from the script. The script ID is then saved in a "bank" database, and an
+"approved_at" date is marked to indicate when it was approved, making the script ready for use.
+The database stores the original segment prompt, the raw script, and a path to the mp3 audio
+recording. The radio queries the most recently approved segments once daily and saves the
+audio file paths in an array of about 25 tracks. The array is shuffled, and the tracks are played
+sequentially, starting with the first track. When the mp3 finishes playing, the next track is loaded.
+To prevent track repetition, each track is removed from the array after it is played using
+"array_shift."
 
-### User Stories
+When the queue has run out (or is near to running out), the station will query the bank again, getting the 25 most recent segments. The player will endlessly loop if no segments are provided but will grab and play the most recent segments between trips to the bank.
 
-You will write out the user stories that will provide the means of showing what your features will do for the different access levels of your users. User stories are a key element for knowing what the user will be able to do with your feature. For example; a user story for a frequently asked question feature would be:
+Approving a segment has three steps a producer must do:
 
-    A logged in Admin user can add a frequently asked question.
+1. approve the user-generated prompt
+2. approve chatGPT script
+3. approve the Text-to-speech audio file
 
-Or for a job application feature:
+Andrew will be handling the Radio Station front end using React. It will utilize a SHOUTcast mp3
+player and be fed the mp3 content described above from the producer cms. The audio content
+will be a continuous stream comprised of all the content types described above (i.e. music,
+news, jokes, tria etc..), some of which will be randomly selected, while other elements will play
+at regular times daily. For instance, most musical content will be selected via a shuffle function.
+Still, content from the colours BRICKMMO application will occur regularly, i.e. a segment for “the colour of the day.” The site will have related content regarding the BRICKMMO city background and additional content regarding the radio station. An overview of how the site
+works and utilizes content generated from user-inputted prompts will be explained, along with a link for someone to become a reporter (if eligible). If the RSS functionality is implemented, there will also be documentation on how to utilize the service.
 
-    A registered Volunteer can apply for a volunteer position.
+<center>User Stories</center>
 
-If we break these stories down, we can see what needs to be in place for them to work. In the first story we have a `logged in admin user` so we will need a login system and a means of distinguishing different types of users. User permissions will also need to be in place. It is important to identify the access `roles` that you will create for your user groups. The second part `can add a frequently asked question` means that we have a form and a mechanism for adding a question. This might mean a link in admin side that says something like `Add new` or `Add new question`. HTML forms have fields of various types, validation, and code that interacts with the server and the database.
+<center>**Listener User Story**</center>
+A listener can visit the broadcast website (ex. BrickRadio.com) and click “play” on a web player
+(likely Shoutcast). The audio stream will play from its current live position.
+The listener will also be able to peruse the site, which will have information on the BRICKMMO
+projects, their origin, and some featured stories and images from the BR Radio station content.
+The listener can also link to the reporter sign-in page and register as a reporter if they are eligible.
 
-In the second story we have a `Registered user` which means that users can register and further confirms a mechanism for providing user rights and permissions. We can also infer a form to submit an application as well as a means of reviewing applicants – this is based on the word `apply`.
+<center>**Reporter User Story**</center>
 
-Remember too that all applications have to have CRUD capability. Each element of CRUD is a user story. This section is also a good place to show what error and success messages you will have for your feature. You do want to have these system messages in place before you start programming. These messages are a key element of the user experience – we all know how impossible it is to use a system with messages that are not easy to understand. We are building features that our audience will want to use.
+**Adding a Segment:** A Reporter can select “login” from the broadcast website and register for an account. Once registered, they can go to “Segments,” An interface will appear, allowing them to choose a type of Segment (Report, Joke, Trivia, Advertisement), write content and submit a
+cover image. The user selects the segment type, and the form will populate with fields that are
+appropriate for that type. Once they are done, they can click “Submit for Approval.” They will
+receive a confirmation message, then be redirected to their dashboard. Once submitted, they can review all their segments that have not been approved yet, and Modify or Delete them as
+necessary.
 
-CRUD is a short form for Create, Read, Update, and Delete. These are the common database functions that are the basis for content management. Every feature for every Web site in the world will have some or all aspects of CRUD and yours will too. Your project is expected to be able to at least manage CRUD operations in a way that you describe.
+**Modifying a Segment:** In the Reporter dashboard, users can click “Segments” in the navigation bar, providing a drop-down menu of the different types of Segments. Once they click a Segment type, they will see a list of the selected segment type they have submitted but have not been approved as yet. If the chosen Segment type is a “Report,” they can click “Edit Report” and make changes to that report.
 
-### Database Description
 
-In this section you will determine what information you intend to collect. You will also show the tables you will create to support your feature. In each table you will begin to denote which data fields are required by a setting of `not null`. This is in turn will be seen in the wireframes where you will mark fields that are required.
+**Deleting a Segment:** In the case of a “Report” type Segment, In the “View My Reports” screen,
+a Reporter can delete a report that has not been approved yet. They will receive confirmation
+before removing it. 
 
-Excel is probably the best means to show your database tables – but any clear means of showing the tables, their connections, and their details is fine. Below is a possible schema for the MVP for a CMS driven Web site.
 
-#### Table Name
+**Reading Segments:** In the case of a “Report” type Segment, In the “View My Reports” screen,
+a Reporter can see all the reports they have created, pending approval, and already approved.
+From this view, they can click Update, or Delete, at which point they will be brought to the
+desired page. It will also be possible to click the title of the Report and see any more related details, if applicable. Additional details may be relational data, such as other reports based on
+the same topic.
 
-| Field | Type |
-| - | - |
-| id | int |
-| foreign_id | int |
-| word | varchar |
-| text | text |
+<center>ERD/Dataflow/Wireframes</center>
+A detailed ERD diagram, Dataflow Diagram, BPMN, and UI/CRUD Wireframes, alongside notes for the Reporter side of the DB, can be found here (please note the links to different pages on
+the top left): 
 
-### Dataflow Diagrams
-
-We use these diagrams to explain how the feature will work. We model the interaction using boxes, diamonds, and arrows. In one sense each box is a page, the diamonds describe decision points, and the arrows show us the flow of the interaction. Each element of CRUD requires a dataflow diagram – these will be for primarily administrative functions. Although if your feature has public functions – then these will also require a dataflow. Within the dataflow you will also add messages, either success, failure, or status, to show what the message says and how it is triggered. Each dataflow diagram will start with a user story to show what the user will be able to do and to act as the test for that part of the feature. If the user can do what the story says in your application – then you know you are finished.
-
-Take a look at the example below. This is a dataflow for the `create` element of CRUD for the MVP. The user story tells you that this is for an admin user who has logged in. There may be several routes to the `add new` functionality – this will depend on how you have managed the admin dashboard for the CMS. The first step is `The new page form loads.` And from there the admin user can enter the data they have prepared. At this point they click `Submit` (which is something to be careful about – make sure you have determined what buttons are to be called – so that you consistently use the same name.). Once the user clicks submit – then the data is validated – this is represented by the diamond. A `yes` response means to keep moving while a `No` requires the feature to take the user back – with an informative error message. Error messages are in red while success messages are in green. The interaction finishes with the new page displayed – or you can go back to the admin dashboard – whatever you have decided.
-
-![Sample Wireframe](../images/v1-wireframe-1.png)
-
-This is the dataflow for Create – read, update, and delete would be next. Read is simple – and doing a Read dataflow is not always needed – it depends on the interaction. Update would look identical – except this time the admin user would be pulling in the form filled in with the data to be edited. Delete is different – rather than a validation diamond you would have a confirmation diamond – this would be a status message (in yellow) asking the user if they were sure they wanted to delete the record. You can expect to have between 4 and 10 dataflow diagrams depending on the feature you are describing. You may also consider that a responsive or an accessible version might require a change in the interaction – if that is the case – dataflow diagrams reflecting responsive (or accessible) interactions may be needed.
-
-### Wireframes
-
-From a broad perspective the point of these documents is to go from very loose `descriptions` to very tight `requirements`: programming the feature itself is the most specific of all. Our narrative description is in English and is not very specific. Then our database is logical but not very useful in telling us how the feature will work: it is simply what data will be collected and how. The dataflow diagrams require us to be more exact in how the feature will work, what goes first, what goes next, and how error, success, and status will be handled. The wireframes are our first attempt to show how the feature will look. The wireframes will show forms, outputs, and views. The arrangement of the data from the database on the screen. They will also show how errors will be displayed and what fields are required.
-
-![Sample Wireframe](../images/v1-wireframe-2.png)
-
-This is the Read view of a page of content.
-
-This is the view of the HTML form that produces the Read view above. If the form is blank – then it is a Create wireframe and if the form is filled – it is an update wireframe.
-
-Here is the same form with an error in place. You would include the error message in this wireframe.
-
-This wireframe is a view of all the records available for the admin users. The gray boxes refer to the page titles and the links on the right are `Edit` and `Delete`. Clicking on `Edit` retrieves the data from the database and places it into the form. Clicking on `Delete` will trigger the delete functionality. You could either load the page and then confirm deleting it or just show the confirmation message.
-
-Your wireframes will be more complex than these. You will build a home page wireframe. This wireframe will hold most of the navigation and the layout for the Web site. Your features will fit into the main wireframe.
-
-### Project Timeline (see provided document)
-
-This document breaks down your plan on a weekly basis. What is your plan for execution across a timeline? Seven weeks is not a lot of time - make sure there is room for deployment and testing!
-
-[&#10132; Back to Version 1](/template-about-markdown/v1)
-
----
-
-<a href="https://brickmmo.com">
-<img src="https://brickmmo.com/images/brickmmo-logo-horizontal.jpg" width="100">
-</a>
+[https://www.figma.com/file/f00JHhkbHqh2G2gYljc8di/Radio-MMO?type=design&nodeid=0%3A1&t=GRYmYPJVdy7SG6Ui-1](https://www.figma.com/file/f00JHhkbHqh2G2gYljc8di/Radio-MMO?type=design&nodeid=0%3A1&t=GRYmYPJVdy7SG6Ui-1)
